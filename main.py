@@ -38,7 +38,7 @@ def main():
             path_to_file = os.path.join(root, files)
             try:
                 image = Image.open(path_to_file)
-            except IOError:
+            except (IOError, Image.DecompressionBombError):
                 continue
             width, height = image.size
             if width >= height:
